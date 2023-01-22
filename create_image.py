@@ -1,3 +1,4 @@
+import os
 import random
 import cv2
 import numpy as np
@@ -7,6 +8,10 @@ from PIL import Image
 from stable_diffusion_engine import StableDiffusionEngine
 import streamlit as st
 
+try:
+    os.mkdir("temp")
+except:
+    pass
 
 
 def main(prompt):
@@ -41,8 +46,8 @@ if __name__ == "__main__":
         if st.button("Create my image"):
             with st.spinner("Your image is cooking in the kitchen..."):
                 image = main(prompt)
-                cv2.imwrite("output.png", image)
-                img = Image.open("output.png")
+                cv2.imwrite("temp/output.png", image)
+                img = Image.open("temp/output.png")
                 st.image(img, caption = prompt)
 
     # prompt = "hyperrealistic image , featuring rain forest of amazon, stunning octane comprehensive render, istvan sandorfi greg rutkowski, unreal engine, symmetrical, dim volumetric cinematic lighting, hyper detailed, intricate, masterpiece, trending on cgsociety"
