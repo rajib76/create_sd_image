@@ -13,6 +13,11 @@ api_key = st.secrets['key']
 os.environ['STABILITY_HOST'] = 'grpc.stability.ai:443'
 os.environ['STABILITY_KEY'] = api_key
 
+try:
+    os.mkdir("temp")
+except:
+    pass
+
 # Set up our connection to the API.
 stability_api = client.StabilityInference(
     key=os.environ['STABILITY_KEY'], # API Key reference.
