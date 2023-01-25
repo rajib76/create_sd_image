@@ -57,8 +57,9 @@ if __name__ == "__main__":
                                 "Your request activated the API's safety filters and could not be processed."
                                 "Please modify the prompt and try again.")
                         if artifact.type == generation.ARTIFACT_IMAGE:
+                            seed_str = str(artifact.seed)
                             img = Image.open(io.BytesIO(artifact.binary))
-                            img.save("temp/"+str(artifact.seed) +".png")
+                            img.save("temp/"+seed_str+".png")
                             #cv2.imwrite("temp/output.png", img)
-                            img = Image.open("temp/"+str(artifact.seed) +".png")
+                            img = Image.open("temp/"+seed_str+".png")
                             st.image(img, caption = prompt)
