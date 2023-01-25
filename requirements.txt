@@ -12,3 +12,4 @@ diffusers==0.2.4
 opencv-python-headless
 scipy
 ftfy==6.1.1
+stability-sdk
